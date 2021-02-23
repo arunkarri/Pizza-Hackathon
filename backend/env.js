@@ -1,3 +1,3 @@
-const frontEndUrl = 'http://localhost:3001/';
+const frontEndUrl = 'https://pizza-delivery-frontend.netlify.app/';
 
 module.exports = frontEndUrl;
