@@ -19,6 +19,8 @@ app.use(function (req, res, next) {
   next();
 });
 
+
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(cors());
