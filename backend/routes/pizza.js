@@ -23,6 +23,21 @@ router.get('/veg-menu', function (req, res, next) {
   });
 });
 
+router.get('/non-veg-menu', function (req, res, next) {
+  const client = new mongo.client(mongo.url, { useNewUrlParser: true, useUnifiedTopology: true });
+
+  client.connect(async (err) => {
+    const db = await client.db(dbName);
+    const menu = await db.collection(collectionName).find({ category: 'non-veg' }).toArray();
+    if (!!menu) {
+      res.json({ menu, statusCode: 200 });
+    } else {
+      res.json({ message: 'No Items Found', statusCode: 500 });
+    }
+    client.close();
+  });
+});
+
 router.get('/base', function (req, res, next) {
   const client = new mongo.client(mongo.url, { useNewUrlParser: true, useUnifiedTopology: true });
 
